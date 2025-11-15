@@ -1,0 +1,268 @@
+/* 1. Философия */
+.intro {
+  background-image: url("https://png.pngtree.com/background/20250121/original/pngtree-background-mountains-picture-image_15393088.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 2. Студенты */
+.students {
+  background-image: url("https://wallpapers.com/images/hd/leaf-background-o4a74dtugqixhtu2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 3. Подкасты */
+.podcast {
+  background-image: url("https://i.pinimg.com/originals/79/ff/17/79ff17f6e2b2f8385ff63985e9fccbdb.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 4. Макала */
+.makala {
+  background-image: url("https://wallpapers.com/images/hd/hd-nature-green-hills-4n4irp6lwgp2wuvt.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.roleplay {
+  background-image: url("https://i.ytimg.com/vi/Tx6BEMd_mlU/maxresdefault.jpg");
+  background-size: cover;
+  background-position: center;
+}
+/* ---- ОБЩИЙ ФОН ---- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather', serif;
+    background: linear-gradient(180deg, #0f0f0f, #1a1a1a, #2b2b2b);
+    color: rgb(255, 255, 255);
+    overflow-x: hidden;
+}
+/* ---- БУРГЕР ---- */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.burger span {
+  width: 30px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Анимация превращения в крестик */
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---- НАВБАР ---- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+.navbar a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Playfair Display", serif;
+  transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #ffcc00;
+  text-shadow: 0 0 15px #ffcc00;
+}
+
+/* ---- АДАПТИВ ---- */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .navbar ul {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(10, 10, 10, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    display: none;
+    box-shadow: 0 0 20px #00000080;
+  }
+
+  .navbar ul.active {
+    display: flex;
+    animation: fadeIn 0.5s ease forwards;
+  }
+}
+
+/* Плавное появление меню */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(-20px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+
+
+
+/* ---- СЕКЦИИ ---- */
+.section {
+    min-height: 100vh;
+    padding: 120px 40px 60px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---- СТУДЕНТЫ ---- */
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #ffffff15;
+    padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+    border: 1px solid #ffffff25;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* ---- ПОДКАСТЫ ---- */
+/* ---- ПОДКАСТЫ (адаптивные) ---- */
+.podcast-column {
+    display: flex;
+    flex-direction: row;      
+    gap: 40px;                /* расстояние между видео */
+    margin-top: 40px;
+    justify-content: center;  
+    flex-wrap: wrap;          
+}
+
+.video-block {
+    flex: 1 1 300px;          /* гибкая ширина: минимум 300px, растет при необходимости */
+    max-width: 400px;
+}
+
+.video-block video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #00000080;
+}
+
+/* Адаптация под планшеты и телефоны */
+@media (max-width: 1024px) {
+    .podcast-column {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .podcast-column {
+        flex-direction: column; /* на телефоне видео в колонку */
+        gap: 20px;
+        align-items: center;
+    }
+
+    .video-block {
+        max-width: 90%;       /* почти вся ширина экрана */
+    }
+}
+
+
+.podcast-column video {
+    width: 85%;
+    max-width: 400px;         /* уменьшаем, чтобы все помещалось в ряд */
+    border-radius: 18px;
+    box-shadow: 0 0 30px #00000080;
+}
+
+
+
+
+/* ---- МАКАЛАЛАР ---- */
+.makala-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 650px;
+    margin: 40px auto 0;
+}
+
+.makala-item {
+    background: #ffffff10;
+    padding: 18px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border: 1px solid #ffffff20;
+    transition: 0.3s;
+}
+
+.makala-item:hover {
+    transform: translateY(-8px);
+    background: #ffffff20;
+}
+
+.fio {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* ---- РӨЛДІК ОЙЫН ---- */
+.roleplay-big video {
+    width: 85%;
+    max-width: 950px;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0 0 30px #00000080;
+}
